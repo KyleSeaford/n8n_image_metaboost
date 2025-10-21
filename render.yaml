@@ -34,6 +34,12 @@ services:
           property: user
       - key: NODE_FUNCTION_ALLOW_EXTERNAL
         value: langchain,openai,@pinecone-database/pinecone,@langchain/openai,@langchain/pinecone,@langchain/core
+      - key: N8N_HOST
+        value: n8n-service-q6n4.onrender.com
+      - key: N8N_PROTOCOL
+        value: https
+      - key: WEBHOOK_URL
+        value: https://n8n-image-metaboost.onrender.com/
 databases:
   - name: n8n-db
     plan: Basic-256mb
