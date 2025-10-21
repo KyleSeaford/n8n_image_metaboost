@@ -2,44 +2,40 @@ services:
   - type: web
     name: n8n-service
     env: docker
-    repo: https://github.com/Instro-AI-Solutions/n8n_image.git  # Use your repo URL
-    branch: main  # Change to your default branch if needed
+    repo: https://github.com/KyleSeaford/n8n_image_metaboost.git
+    branch: main
     plan: pro
-    # Cannot change region and due to migration from free plan we are stuck on Ohio. However this shoudl be set to Frankfert when the opportunity arises
-    # region: frankfurt
-    # Optionally, specify the Dockerfile and context if not at root:
-    # dockerfilePath: ./Dockerfile
-    # buildContext: ./
-
     envVars:
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
       - key: DB_TYPE
-        value: postgresdb
-      - key: DB_POSTGRESDB_DATABASE
+        value: postgres
+      - key: DB_POSTGRES_DB_DATABASE
         fromDatabase:
           name: n8n-db
           property: database
-      - key: DB_POSTGRESDB_HOST
+      - key: DB_POSTGRES_DB_HOST
         fromDatabase:
           name: n8n-db
           property: host
-      - key: DB_POSTGRESDB_PASSWORD
+      - key: DB_POSTGRES_DB_PASSWORD
         fromDatabase:
           name: n8n-db
           property: password
-      - key: DB_POSTGRESDB_USER
+      - key: DB_POSTGRES_DB_USER
         fromDatabase:
           name: n8n-db
           property: user
       - key: NODE_FUNCTION_ALLOW_EXTERNAL
         value: langchain,openai,@pinecone-database/pinecone,@langchain/openai,@langchain/pinecone,@langchain/core
       - key: N8N_HOST
-        value: n8n-service-q6n4.onrender.com
+        value: n8n-image-metaboost.onrender.com
       - key: N8N_PROTOCOL
         value: https
+      - key: N8N_PORT
+        value: 443
       - key: WEBHOOK_URL
-        value: https://n8n-image-metaboost.onrender.com/
+        value: https://n8n-image-metaboost.onrender.com
 databases:
   - name: n8n-db
     plan: Basic-256mb
