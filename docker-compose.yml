@@ -10,9 +10,8 @@ services:
     environment:
       - N8N_HOST=localhost
       - N8N_PORT=5678
-      - N8N_PROTOCOL=http
-      - NODE_FUNCTION_ALLOW_EXTERNAL=langchain,openai,@pinecone-database/pinecone
+      - N8N_PROTOCOL=https
+      - NODE_FUNCTION_ALLOW_EXTERNAL=langchain,openai,@pinecone-database/pinecone,@langchain/openai,@langchain/pinecone,@langchain/core
       - N8N_SECURE_COOKIE=false 
     volumes:
       - ./n8n_data:/data
-
