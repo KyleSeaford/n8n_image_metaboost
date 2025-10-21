@@ -6,28 +6,7 @@ services:
     branch: main
     plan: pro
     envVars:
-      - key: N8N_ENCRYPTION_KEY
-        generateValue: true
-      - key: DB_TYPE
-        value: postgres
-      - key: DB_POSTGRES_DB_DATABASE
-        fromDatabase:
-          name: n8n-db
-          property: database
-      - key: DB_POSTGRES_DB_HOST
-        fromDatabase:
-          name: n8n-db
-          property: host
-      - key: DB_POSTGRES_DB_PASSWORD
-        fromDatabase:
-          name: n8n-db
-          property: password
-      - key: DB_POSTGRES_DB_USER
-        fromDatabase:
-          name: n8n-db
-          property: user
-      - key: NODE_FUNCTION_ALLOW_EXTERNAL
-        value: langchain,openai,@pinecone-database/pinecone,@langchain/openai,@langchain/pinecone,@langchain/core
+      ...
       - key: N8N_HOST
         value: n8n-image-metaboost.onrender.com
       - key: N8N_PROTOCOL
